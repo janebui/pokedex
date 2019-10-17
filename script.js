@@ -11,7 +11,7 @@ const input = document.querySelector("input");
 // initialize pikachu as the starting pokemon
 let pokemon = {
     name: 'pikachu',
-    id: '25',
+    id: '',
     img: '',
     type: '',
     abilities: ''
@@ -39,7 +39,7 @@ function populate(apiURL) {
         const html = `
     <div class="name">${data.name}</div>
     <img class="img" src=${data.sprites.front_default}>
-    <div class="height"><span class="description">Height:</span> ${data.height / 4}'</div>
+    <div class="height"><span class="description">Height:</span> ${Math.round(data.height / 3)}'</div>
     <div class="height"><span class="description">Weight:</span> ${Math.round(data.weight / 4)}lbs</div>
     <div class="type"><span class="description">Type:</span> ${data.types[0].type.name}</div>
     <div class="abilities"><span class="description">Abilities:</span> ${formattedStr}</div>
