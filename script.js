@@ -8,16 +8,15 @@ const pokemonArray = [];
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
-// initialize pikachu as the starting pokemon
-let pokemon = {
-    name: 'pikachu',
-    id: '',
-    img: '',
-    type: '',
-    abilities: ''
-}
+const name = document.querySelector("#name");
+const img = document.querySelector("#image");
+const type = document.querySelector("#type");
+const height = document.querySelector("#height");
+const weight = document.querySelector("#weight");
+const abilities = document.querySelector("#abilities");
 
-let apiURL = `${url}${category}/${pokemon.name}`;
+// // initialize pikachu as the starting pokemon
+let apiURL = `${url}${category}/pikachu`;
 
 // fetch data from pokemon API and render to html
 function populate(apiURL) {
@@ -26,35 +25,25 @@ function populate(apiURL) {
         .then(data => format(data))
 
     const format = (data) => {
-        let formattedStr = '';
-        data.abilities.map((ability, i) => {
-            let str = ability.ability.name.replace("-", " ");
-            if (i != data.abilities.length - 1) {
-                formattedStr += `${str}, `;
-            } else {
-                formattedStr += str;
-            }
-        })
+        let abilitiesArr = data.abilities.map((ability, i) =>
+            ability.ability.name.replace("-", " ")).join(", ");
 
-        const html = `
-    <div class="name">${data.name}</div>
-    <img class="img" src=${data.sprites.front_default}>
-    <div class="height"><span class="description">Height:</span> ${Math.round(data.height / 3)}'</div>
-    <div class="height"><span class="description">Weight:</span> ${Math.round(data.weight / 4)}lbs</div>
-    <div class="type"><span class="description">Type:</span> ${data.types[0].type.name}</div>
-    <div class="abilities"><span class="description">Abilities:</span> ${formattedStr}</div>
-`
-        pokedex.innerHTML = html;
+        name.textContent = `${(data.name).replace('-', ' ')}`;
+        image.innerHTML = `<img src=${data.sprites.front_default}>`;
+        type.textContent = `${data.types[0].type.name}`;
+        height.textContent = `${Math.round(data.height / 3)}'`;
+        weight.textContent = `${Math.round(data.weight / 4)}lbs`;
+        abilities.textContent = `${abilitiesArr}`;
     }
 }
 
 // searches for another pokemon based on user search input, then repopulates
 function search(e) {
     e.preventDefault();
-    pokemon.name = input.value.toLowerCase().trim();
-    
-    apiURL = `${url}${category}/${pokemon.name}`;
-    
+    let name = input.value.toLowerCase().trim().replace('.', '').replace(' ','-');
+
+    apiURL = `${url}${category}/${name}`;
+
     this.reset();
     populate(apiURL);
 }

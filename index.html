@@ -8,26 +8,48 @@
     <title>Pokedex | Jane Bui</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c9e294f434.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Pokédex</h1>
-    <div class="container">
-        <div class="screen">
+    <form>
+        <input type="text" placeholder="e.g. raichu">
+        <button><i class="fas fa-search"></i></button>
+    </form>
+    <div class="card">
+        <div class="cardtop"><h2><span id="name"></span></h2></div>
+        <span id="image"></span>
 
-            <div class="pokedex">
-                
-            </div>
+        <div class="box">
+            
+
+            <table class="pokemon" cellspacing="10">
+                <tbody>
+                    <tr>
+                        <th>Type</th>
+                        <td><span id="type"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Height</th>
+                        <td><span id="height"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <td><span id="weight"></span></td>
+                    </tr>
+                    <tr>
+                        <th valign="top">Abilities</th>
+                        <td><span id="abilities"></span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <form>
-            <input type="text" placeholder="e.g. raichu">
-            <button>Search</button>
-        </form>
-
     </div>
 
     <p>
-        Created by <a href="http://www.janebui.com">Jane Bui</a>. API data from <a href="https://pokeapi.co/">PokeAPI</a>
+        Created by <a href="http://www.janebui.com">Jane Bui</a>. API data from <a
+            href="https://pokeapi.co/">PokeAPI</a>
     </p>
     <script src="script.js"></script>
 </body>
