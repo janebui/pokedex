@@ -1,10 +1,8 @@
 // Jane Bui, 2019
 // API data from https://pokeapi.co/
 
-const pokedex = document.querySelector('.pokedex');
 const url = "https://pokeapi.co/api/v2/";
 const category = "pokemon";
-const pokemonArray = [];
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
